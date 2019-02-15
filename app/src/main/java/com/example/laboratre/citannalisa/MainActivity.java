@@ -5,25 +5,29 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.laboratre.citannalisa.models.Citazione;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
     Button b1;
     TextView t1;
-    private String[] Citazioni = new String[10];
+    private ArrayList<Citazione> Citazioni = new ArrayList<Citazione>();
 
     public  MainActivity(){
-        Citazioni[0] = "Il lupo perde il vizio, ma non il pelo";
-        Citazioni[1] = "Attack' u ciucc addò v'en";
-        Citazioni[2] = "Con il boccone non si mangia";
-        Citazioni[3] = "Non tutti siamo nati con le mutande";
-        Citazioni[4] = "Chi mangia da sè, fa per tre... ed è più felice!";
-        Citazioni[5] = "Prima si fa, più felici si è (Rif. albero di Natale)";
-        Citazioni[6] = "La verità va avanti, le bugie vanno dietro";
-        Citazioni[7] = "Attento a quello che dici, potrebbe ritornare verso di te (a piedi o in bici)";
-        Citazioni[8] = "Mettere il coltello nella piaga";
-        Citazioni[9] = "Alessandro e Freddy Mercury...due gocce d'acqua";
+        Citazioni.add(new Citazione("Il lupo perde il vizio, ma non il pelo","lupo.png"));
+        Citazioni.add(new Citazione("Attack' u ciucc addò v'en","lupo.png"));
+        Citazioni.add(new Citazione("Con il boccone non si mangia","lupo.png"));
+        Citazioni.add(new Citazione("Non tutti siamo nati con le mutande","lupo.png"));
+        Citazioni.add(new Citazione("Chi mangia da sè, fa per tre... ed è più felice!","lupo.png"));
+        Citazioni.add(new Citazione("La verità va avanti, le bugie vanno dietro","lupo.png"));
+        Citazioni.add(new Citazione("Prima si fa, più felici si è (Rif. albero di Natale)","lupo.png"));
+        Citazioni.add(new Citazione("Attento a quello che dici, potrebbe ritornare verso di te (a piedi o in bici)","lupo.png"));
+        Citazioni.add(new Citazione("Mettere il coltello nella piaga","lupo.png"));
+        Citazioni.add(new Citazione("Alessandro e Freddy Mercury...due gocce d'acqua","lupo.png"));
     }
 
     @Override
@@ -41,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int random = (int)(Math.random() * Citazioni.length);
-                t1.setText(Citazioni[random]);
+                int random = (int)(Math.random() * Citazioni.size());
+                t1.setText(Citazioni.get(random).GetFrase());
             }
         });
     }
